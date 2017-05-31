@@ -1,0 +1,30 @@
+﻿@using Black_Conner_HW5.Controllers
+
+@{
+    ViewBag.Title = "DetailedSearch";
+}
+
+<h2>DetailedSearch</h2>
+
+@using (Html.BeginForm("SearchResults", "Home", FormMethod.Get))
+{
+    <p class="form-group">
+        Customer Name: @Html.TextBox("NameString", null, new { @class = "form-control" }) <br />
+
+        @Html.DropDownList("Frequency", (SelectList)ViewBag.AllFrequencies, new { @class = "form-control" })
+
+        <div class="form-group">
+            <label class="radio">@Html.RadioButton("Gender", Gender.All, true)All</label>
+            <label class="radio">@Html.RadioButton("Gender", Gender.Male)Male</label>
+            <label class="radio">@Html.RadioButton("Gender", Gender.Female)Female</label>
+        </div>
+
+        <br /><br />
+        Sales Amount: @Html.TextBox("SalesAmountString", null, new { @class = "form-control" }) <br />
+        <label class="radio">@Html.RadioButton("Direction", Order.Greater)Greater Than</label>
+        <label class="radio">@Html.RadioButton("Direction", Order.Less)Less Than</label>
+ 
+        <input type="submit" value="Search" class="btn btn-default" />
+    </p>
+
+}
